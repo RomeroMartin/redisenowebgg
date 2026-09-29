@@ -1,16 +1,18 @@
-repo: RomeroMartin/GreenGarden2
+repo: RomeroMartin/redisenowebgg
 branch: main
 
 ## Last sync
-date: 2026-09-28T12:49:30Z
+date: 2026-09-29T12:07:07Z
 
 ### Updated in this project
-- Rediseño mobile-first en 2 direcciones (Pizarrón / Papel)
-- Imágenes del local, playroom y páginas del menú importadas
+- Repositorio del rediseño creado con todos los archivos del proyecto
+- Green Garden.dc.html (versión final) y Green Garden Rediseño.dc.html (exploraciones)
 
 ## Screen map
 | Pantalla | Archivos del repo |
 |---|---|
-| Green Garden.dc.html (sitio responsive, dirección 1a) | index.html, menu.html, playroom.html, nosotros.html |
-| Green Garden Rediseño.dc.html · 1a Pizarrón | index.html, menu.html, playroom.html, nosotros.html |
-| Green Garden Rediseño.dc.html · 1b Papel | index.html, menu.html, playroom.html, nosotros.html |
+| Green Garden.dc.html (sitio responsive, dirección 1a) | Green Garden.dc.html, img/ |
+| Green Garden Rediseño.dc.html · 1a Pizarrón / 1b Papel | Green Garden Rediseño.dc.html, img/ |
+
+## Sync history
+- 2026-09-28T12:49:30Z — origen: RomeroMartin/GreenGarden2 (main), sitio original usado como base del rediseño
