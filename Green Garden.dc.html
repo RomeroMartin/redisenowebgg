@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Green Garden — Nuestra casa, tu lugar.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#12211C;color:#EFEADC;font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#D2AC67;text-decoration:none}
+a:hover{color:#EFEADC}
+.gg-scroll::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<div data-screen-label="Green Garden · Inicio" style="min-height:100vh">
+  <header style="position:sticky;top:0;z-index:30;background:#12211C;border-bottom:1px solid #22342D">
+    <div style="max-width:1240px;margin:0 auto;padding:12px clamp(18px,4vw,40px);display:flex;align-items:center;gap:24px">
+      <a href="#inicio" style="flex:none;display:flex"><img src="img/logo.png" alt="Green Garden" style="height:36px;filter:brightness(0) invert(.93) sepia(.15)"></a>
+      <nav style="flex:1;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 28px;height:22px;overflow:hidden;font-size:14px;font-weight:500">
+        <a href="#menu" style="color:#EFEADC" style-hover="color:#D2AC67">Menú</a>
+        <a href="#lugar" style="color:#EFEADC" style-hover="color:#D2AC67">El lugar</a>
+        <a href="#playroom" style="color:#EFEADC" style-hover="color:#D2AC67">Playroom</a>
+        <a href="#contacto" style="color:#EFEADC" style-hover="color:#D2AC67">Ubicación</a>
+      </nav>
+      <div style="flex:none;display:flex;align-items:center;gap:8px;font-size:12px;color:#CFC9B8">
+        <span style="width:7px;height:7px;border-radius:50%;background:{{ statusDot }}"></span><span>{{ statusShort }}</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="inicio" style="position:relative;height:clamp(560px,86vh,820px);background:#00342C;overflow:hidden">
+    <img src="img/hero.webp" alt="Salón Green Garden" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,33,28,.15) 25%,rgba(18,33,28,.8) 68%,#12211C 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:clamp(28px,6vh,72px)">
+      <div style="max-width:1240px;margin:0 auto;padding:0 clamp(22px,4vw,40px)">
+        <div style="max-width:680px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D2AC67;margin-bottom:14px">La Plata · Desde 2016</div>
+          <h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(58px,9vw,120px);line-height:.92;margin:0 0 18px;color:#EFEADC">Nuestra casa,<br><em style="color:#D2AC67">tu lugar.</em></h1>
+          <p style="margin:0 0 26px;font-size:clamp(15px,1.4vw,18px);line-height:1.55;color:#CFC9B8;max-width:480px;text-wrap:pretty">Gastronomía con alma casera. Platos pensados con los mejores ingredientes, en un espacio familiar único en La Plata.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;max-width:440px">
+            <a href="#menu" style="flex:1 1 150px;display:flex;align-items:center;justify-content:center;height:54px;border-radius:27px;background:#EFEADC;color:#12211C;font-weight:600;font-size:15px" style-hover="background:#FFFFFF;color:#12211C">Ver el menú</a>
+            <a href="#playroom" style="flex:1 1 150px;display:flex;align-items:center;justify-content:center;gap:8px;height:54px;border-radius:27px;border:1px solid #D2AC67;color:#EFEADC;font-weight:600;font-size:15px" style-hover="background:#00342C;color:#EFEADC"><span style="width:7px;height:7px;border-radius:50%;background:#D2AC67"></span>Cámaras playroom</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" style="padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,80px)">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(22px,4vw,40px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D2AC67">Lo que servimos</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(42px,5.5vw,72px);line-height:1;margin:10px 0 0">Nuestro menú</h2>
+        <p style="margin:12px 0 0;font-size:15px;color:#CFC9B8;max-width:460px">Platos caseros con los mejores ingredientes del mercado, disponibles en todos los horarios del día.</p>
+      </div>
+      <div class="gg-scroll" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:100%">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.select }}" style="flex:none;height:44px;padding:0 18px;border-radius:22px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font-family:Manrope,sans-serif;font-size:14px;font-weight:600;cursor:pointer">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:22px clamp(22px,4vw,40px) 14px;font-size:14px;color:#CFC9B8">{{ tabInfo }} · tocá una página para leerla</div>
+    <div class="gg-scroll" style="max-width:1240px;margin:0 auto;display:flex;gap:14px;padding:0 clamp(22px,4vw,40px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none">
+      <sc-for list="{{ pages }}" as="p" hint-placeholder-count="5">
+        <button onClick="{{ p.open }}" style="flex:none;width:{{ p.w }};aspect-ratio:{{ p.ratio }};padding:0;border:0;border-radius:10px;overflow:hidden;background:#1E3029;scroll-snap-align:start;cursor:zoom-in;position:relative">
+          <img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+          <span style="position:absolute;left:8px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:11px;background:#12211C;color:#EFEADC;padding:3px 7px;border-radius:4px">{{ p.num }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="lugar" style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(22px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(28px,5vw,72px);align-items:center">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D2AC67">El lugar</div>
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(42px,5.5vw,72px);line-height:1;margin:10px 0 18px">Cocina con alma,<br>sabor de casa</h2>
+      <p style="margin:0 0 14px;font-size:16px;line-height:1.65;color:#CFC9B8;max-width:500px;text-wrap:pretty">Desde 2016 diseñamos una experiencia gastronómica basada en la excelencia. Instalaciones en Diag. 74 e/49 y 50 con producción propia y tecnología de vanguardia.</p>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#CFC9B8;max-width:500px;text-wrap:pretty">En Green Garden nuestros clientes son familia. Por eso diseñamos un espacio completamente para niños, con juegos para todas las edades al cuidado de nuestras profes.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:clamp(170px,20vw,260px) clamp(150px,18vw,230px);gap:10px">
+      <img src="img/nosotros1.webp" alt="Salón" style="grid-row:1 / 3;width:100%;height:100%;object-fit:cover;border-radius:12px">
+      <img src="img/nosotros2.webp" alt="Ambiente" style="width:100%;height:100%;object-fit:cover;border-radius:12px">
+      <img src="img/nosotros3.webp" alt="Equipo" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:12px">
+    </div>
+  </section>
+
+  <section id="playroom" style="background:#00342C;padding:clamp(56px,8vw,110px) 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 clamp(22px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,72px);align-items:start">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D2AC67">Playroom infantil</div>
+        <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(42px,5.5vw,72px);line-height:1;margin:10px 0 20px">Seguí a los chicos<br>desde tu mesa</h2>
+        <img src="img/playroom1.webp" alt="Playroom" style="width:100%;aspect-ratio:16 / 10;object-fit:cover;border-radius:12px;display:block;margin-bottom:18px">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #1F4E45;border-bottom:1px solid #1F4E45">
+          <div style="padding:14px 0"><div style="font-family:'Instrument Serif',serif;font-size:30px">3–10</div><div style="font-size:13px;color:#CFC9B8">años</div></div>
+          <div style="padding:14px 0 14px 14px;border-left:1px solid #1F4E45"><div style="font-family:'Instrument Serif',serif;font-size:30px">30</div><div style="font-size:13px;color:#CFC9B8">niños máx.</div></div>
+          <div style="padding:14px 0 14px 14px;border-left:1px solid #1F4E45"><div style="font-family:'Instrument Serif',serif;font-size:30px">$3.800</div><div style="font-size:13px;color:#CFC9B8">por niño</div></div>
+        </div>
+      </div>
+      <div style="background:#12211C;border-radius:16px;padding:clamp(22px,3vw,36px)">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#D2AC67;margin-bottom:6px"><span style="width:7px;height:7px;border-radius:50%;background:#D2AC67"></span>Cámaras en vivo</div>
+        <h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:34px;line-height:1.05;margin:0 0 22px">Cómo conectarte</h3>
+        <ol style="list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column;gap:18px">
+          <li style="display:flex;gap:16px"><span style="font-family:'Instrument Serif',serif;font-size:24px;color:#D2AC67;width:18px;line-height:1">1</span><div style="font-size:16px;line-height:1.5">Conectate al WiFi <strong style="font-weight:600">Green Garden</strong></div></li>
+          <li style="display:flex;gap:16px"><span style="font-family:'Instrument Serif',serif;font-size:24px;color:#D2AC67;width:18px;line-height:1">2</span><div style="font-size:16px;line-height:1.5;flex:1">Ingresá con estos datos
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+              <button onClick="{{ copyUser }}" style="text-align:left;padding:12px 14px;border-radius:10px;border:1px solid #22342D;background:#00342C;color:#EFEADC;cursor:pointer;font-family:Manrope,sans-serif"><div style="font-size:12px;color:#CFC9B8">Usuario · {{ copyUserLbl }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:16px;margin-top:2px">camaras</div></button>
+              <button onClick="{{ copyPass }}" style="text-align:left;padding:12px 14px;border-radius:10px;border:1px solid #22342D;background:#00342C;color:#EFEADC;cursor:pointer;font-family:Manrope,sans-serif"><div style="font-size:12px;color:#CFC9B8">Contraseña · {{ copyPassLbl }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:16px;margin-top:2px">green</div></button>
+            </div></div></li>
+          <li style="display:flex;gap:16px"><span style="font-family:'Instrument Serif',serif;font-size:24px;color:#D2AC67;width:18px;line-height:1">3</span><div style="font-size:16px;line-height:1.5">Tocá el ícono cuadrado arriba a la izquierda para ver todas las cámaras.</div></li>
+        </ol>
+        <a href="http://camaras.greengarden.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:56px;border-radius:28px;background:#D2AC67;color:#12211C;font-weight:700;font-size:16px" style-hover="background:#EFEADC;color:#12211C">Conectarme a las cámaras</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,100px) 0 0">
+    <div style="padding:0 clamp(22px,4vw,40px);display:flex;align-items:baseline;justify-content:space-between">
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4vw,52px);margin:0">Lo que dicen</h2>
+      <span style="font-size:13px;color:#CFC9B8">Google</span>
+    </div>
+    <div class="gg-scroll" style="display:flex;gap:12px;padding:20px clamp(22px,4vw,40px) 0;overflow-x:auto;scrollbar-width:none">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+        <div style="flex:1 0 280px;max-width:400px;padding:22px;border-radius:12px;border:1px solid #22342D;background:repeating-linear-gradient(135deg,#12211C 0 8px,#16271F 8px 16px)">
+          <div style="color:#D2AC67;letter-spacing:3px;font-size:14px">★★★★★</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.6;color:#CFC9B8;margin-top:10px">reseña real de Google<br>nombre · fecha</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,90px) clamp(22px,4vw,40px)">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4vw,52px);margin:0">Instagram</h2>
+      <a href="https://instagram.com/greengardenlaplata" target="_blank" rel="noopener" style="font-size:14px">@greengardenlaplata</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(30%,180px),1fr));gap:6px">
+      <sc-for list="{{ insta }}" as="g" hint-placeholder-count="6">
+        <img src="{{ g }}" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:6px">
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="contacto" style="max-width:1240px;margin:0 auto;padding:0 clamp(22px,4vw,40px) clamp(48px,7vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px">
+    <div style="padding:clamp(26px,4vw,44px);border-radius:16px;background:#EFEADC;color:#1B1A14;display:flex;flex-direction:column">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6B4A2F">Reservas</div>
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(38px,4.5vw,58px);line-height:1;margin:12px 0 12px">Reservá tu mesa por teléfono</h2>
+      <p style="margin:0 0 24px;font-size:16px;line-height:1.55;color:#57544A">Te atendemos todos los días de 08:00 a 02:00 hs.</p>
+      <a href="tel:02214895239" style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 24px;border-radius:29px;background:#12211C;color:#EFEADC;font-weight:600;font-size:16px" style-hover="background:#00342C;color:#EFEADC"><span>Llamar</span><span style="font-family:'JetBrains Mono',monospace;font-size:15px">0221-489-5239</span></a>
+    </div>
+    <div>
+      <h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(34px,4vw,52px);margin:0 0 16px">Vení a visitarnos</h2>
+      <div style="border-radius:12px;overflow:hidden;height:220px;background:#1E3029;margin-bottom:12px">
+        <iframe src="https://www.google.com/maps?q=Diag.+74+1618,+La+Plata,+Buenos+Aires&amp;output=embed" loading="lazy" title="Mapa Green Garden" style="width:100%;height:100%;border:0;filter:grayscale(.6) contrast(.95)"></iframe>
+      </div>
+      <div style="display:flex;flex-direction:column;font-size:14px">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:12px 0;border-bottom:1px solid #22342D"><span style="color:#CFC9B8">Dirección</span><span>Diag. 74 1618, La Plata</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:12px 0;border-bottom:1px solid #22342D"><span style="color:#CFC9B8">Horarios</span><span>Lun – Dom · 08:00 – 02:00</span></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:12px 0;border-bottom:1px solid #22342D"><span style="color:#CFC9B8">Email</span><a href="mailto:greengardenlaplata@gmail.com">greengardenlaplata@gmail.com</a></div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:12px 0"><span style="color:#CFC9B8">WiFi</span><span>Green Garden - Libre</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid #22342D">
+    <div style="max-width:1240px;margin:0 auto;padding:24px clamp(22px,4vw,40px) 120px;font-size:12px;color:#CFC9B8;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between">
+      <span>© 2026 Green Garden · Diag. 74 1618, La Plata</span><a href="https://www.martinromerostudio.com.ar" target="_blank" rel="noopener" style="color:#CFC9B8">Martin Romero Studio</a>
+    </div>
+  </footer>
+
+  <sc-if value="{{ stickyCall }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed;z-index:25;right:14px;bottom:16px;width:min(420px,calc(100% - 28px))">
+      <a href="tel:02214895239" style="display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:28px;background:#D2AC67;color:#12211C;font-weight:700;font-size:16px;box-shadow:0 12px 28px -8px rgba(0,0,0,.6)" style-hover="background:#EFEADC;color:#12211C">Llamar para reservar · 0221-489-5239</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ viewerOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:50;background:#12211C;display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px clamp(18px,4vw,40px);color:#EFEADC">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px">{{ vCount }}</span>
+        <button onClick="{{ vClose }}" style="width:46px;height:46px;border-radius:23px;border:1px solid #2E463D;background:transparent;color:#EFEADC;font-size:22px;cursor:pointer">×</button>
+      </div>
+      <div style="flex:1;min-height:0;padding:0 12px"><img src="{{ vSrc }}" alt="Página del menú" style="width:100%;height:100%;object-fit:contain"></div>
+      <div style="display:flex;gap:10px;justify-content:center;padding:16px 18px 26px">
+        <button onClick="{{ vPrev }}" style="flex:0 1 200px;height:50px;border-radius:25px;border:1px solid #2E463D;background:transparent;color:#EFEADC;font-family:Manrope,sans-serif;font-size:15px;cursor:pointer">Anterior</button>
+        <button onClick="{{ vNext }}" style="flex:0 1 200px;height:50px;border-radius:25px;border:0;background:#EFEADC;color:#12211C;font-family:Manrope,sans-serif;font-weight:600;font-size:15px;cursor:pointer">Siguiente</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;stickyCall&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conversión&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 'almuerzo', viewer: null, copied: null };
+  menus = {
+    almuerzo: { label: 'Almuerzos & Cenas', short: 'Almuerzo y cena', pages: Array.from({ length: 20 }, (_, i) => `img/menu/menu${String(i + 1).padStart(2, '0')}.webp`), info: 'Mediodía y noche · 20 páginas' },
+    merienda: { label: 'Desayunos & Meriendas', short: 'Desayuno y merienda', pages: [1, 2, 3, 4].map(i => `img/menu/merienda0${i}.webp`), info: 'Mañana y tarde · 4 páginas' },
+    sintacc: { label: 'Sin TACC', short: 'Sin TACC', pages: ['img/menu/menutacc.webp'], wide: true, info: 'Apto celíacos · todos los horarios' }
+  };
+  componentDidMount() {
+    this._key = e => {
+      if (!this.state.viewer) return;
+      if (e.key === 'Escape') this.setState({ viewer: null });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    window.addEventListener('keydown', this._key);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._key); }
+  step(d) {
+    this.setState(s => { const n = this.menus[s.viewer.key].pages.length; return { viewer: { ...s.viewer, i: (s.viewer.i + d + n) % n } }; });
+  }
+  copy(key, text) {
+    try { navigator.clipboard && navigator.clipboard.writeText(text); } catch (e) {}
+    this.setState({ copied: key });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ copied: null }), 1600);
+  }
+  renderVals() {
+    const { tab, viewer, copied } = this.state;
+    const now = new Date(); const mins = now.getHours() * 60 + now.getMinutes();
+    const open = mins >= 480 || mins < 120;
+    const m = this.menus[tab];
+    const v = viewer ? this.menus[viewer.key].pages : [];
+    return {
+      statusShort: open ? 'Abierto · hasta 02:00' : 'Abrimos 08:00',
+      statusDot: open ? '#7FB08E' : '#D2AC67',
+      stickyCall: this.props.stickyCall ?? true,
+      tabs: ['almuerzo', 'merienda', 'sintacc'].map(k => { const a = k === tab; return { label: this.menus[k].short, bg: a ? '#EFEADC' : 'transparent', fg: a ? '#12211C' : '#EFEADC', border: a ? '#EFEADC' : '#2E463D', select: () => this.setState({ tab: k }) }; }),
+      tabInfo: m.info,
+      pages: m.pages.map((src, i) => ({
+        src, alt: `${m.label} — pág. ${i + 1}`, num: String(i + 1).padStart(2, '0'),
+        w: m.wide ? 'min(560px,85vw)' : 'clamp(170px,18vw,230px)', ratio: m.wide ? '3 / 2' : '3 / 4',
+        open: () => this.setState({ viewer: { key: tab, i } })
+      })),
+      viewerOpen: !!viewer,
+      vSrc: viewer ? v[viewer.i] : '',
+      vCount: viewer ? `${this.menus[viewer.key].label} · ${viewer.i + 1} / ${v.length}` : '',
+      vClose: () => this.setState({ viewer: null }),
+      vPrev: () => this.step(-1), vNext: () => this.step(1),
+      copyUser: () => this.copy('u', 'camaras'), copyPass: () => this.copy('p', 'green'),
+      copyUserLbl: copied === 'u' ? 'copiado' : 'copiar', copyPassLbl: copied === 'p' ? 'copiado' : 'copiar',
+      reviews: [1, 2, 3],
+      insta: ['img/playroom3.webp', 'img/almuerzo.webp', 'img/playroom4.webp', 'img/merienda.webp', 'img/playroom5.webp', 'img/sintacc.webp']
+    };
+  }
+}
+</script>
+</body>
+</html>
