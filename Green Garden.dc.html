@@ -44,7 +44,6 @@ a{color:var(--gg-dorado);text-decoration:none}
 a:hover{color:var(--gg-crema)}
 .gg-scroll::-webkit-scrollbar{display:none}
 </style>
-<script src="https://elfsightcdn.com/platform.js" async=""></script>
 </helmet>
 <div data-screen-label="Green Garden · Inicio" style="min-height:100vh">
   <header style="position:sticky;top:0;z-index:30;background:var(--gg-verde);border-bottom:1px solid var(--gg-linea)">
@@ -147,29 +146,7 @@ a:hover{color:var(--gg-crema)}
     </div>
   </section>
 
-  <section style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,100px) 0 0">
-    <div style="padding:0 clamp(22px,4vw,40px);display:flex;align-items:baseline;justify-content:space-between">
-      <h2 style="font-size:clamp(34px,4vw,52px);margin:0">Lo que dicen</h2>
-      <span style="font-size:13px;color:var(--gg-crema-suave)">Google</span>
-    </div>
-    <div style="padding:20px clamp(22px,4vw,40px) 0;min-height:200px">
-      <div class="elfsight-app-c9768488-0d6a-475f-a735-008d92cf42e2" data-elfsight-app-lazy=""></div>
-    </div>
-  </section>
-
-  <section style="max-width:1240px;margin:0 auto;padding:clamp(48px,7vw,90px) clamp(22px,4vw,40px)">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
-      <h2 style="font-size:clamp(34px,4vw,52px);margin:0">Instagram</h2>
-      <a href="https://instagram.com/greengardenlaplata" target="_blank" rel="noopener" style="font-size:14px">@greengardenlaplata</a>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(30%,180px),1fr));gap:6px">
-      <sc-for list="{{ insta }}" as="g" hint-placeholder-count="6">
-        <a href="{{ g.href }}" target="_blank" rel="noopener" style="display:block;border-radius:6px;overflow:hidden" style-hover="opacity:.85"><img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;display:block"></a>
-      </sc-for>
-    </div>
-  </section>
-
-  <section id="contacto" style="max-width:1240px;margin:0 auto;padding:0 clamp(22px,4vw,40px) clamp(48px,7vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px">
+  <section id="contacto" style="max-width:1240px;margin:0 auto;padding:clamp(56px,8vw,100px) clamp(22px,4vw,40px) clamp(48px,7vw,90px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px">
     <div style="padding:clamp(26px,4vw,44px);border-radius:16px;background:var(--gg-crema);color:var(--gg-negro);display:flex;flex-direction:column">
       <div class="gg-eyebrow" style="color:var(--gg-verde)">Reservas</div>
       <h2 style="font-size:clamp(38px,4.5vw,58px);line-height:1;margin:12px 0 12px">Reservá tu mesa por teléfono</h2>
@@ -228,20 +205,7 @@ class Component extends DCLogic {
     merienda: { label: 'Desayunos & Meriendas', short: 'Desayuno y merienda', pages: [1, 2, 3, 4].map(i => `img/menu/merienda0${i}.webp`), info: 'Mañana y tarde · 4 páginas' },
     sintacc: { label: 'Sin TACC', short: 'Sin TACC', pages: ['img/menu/menutacc.webp'], wide: true, info: 'Apto celíacos · todos los horarios' }
   };
-  loadInstagram() {
-    const feedId = ''; // pegar acá el feed-id de Behold de @greengardenlaplata
-    if (!feedId) return;
-    fetch('https://feeds.behold.so/' + feedId).then(r => r.ok ? r.json() : Promise.reject(r.status)).then(d => {
-      const posts = Array.isArray(d) ? d : (d.posts || []);
-      const ig = posts.map(p => ({
-        src: (p.sizes && (p.sizes.medium || p.sizes.large || {}).mediaUrl) || (p.mediaType === 'VIDEO' ? p.thumbnailUrl : p.mediaUrl),
-        href: p.permalink, alt: (p.prunedCaption || p.caption || '').slice(0, 120)
-      })).filter(p => p.src).slice(0, 9);
-      if (ig.length) this.setState({ ig });
-    }).catch(e => console.warn('Instagram feed:', e));
-  }
   componentDidMount() {
-    this.loadInstagram();
     this._key = e => {
       if (!this.state.viewer) return;
       if (e.key === 'Escape') this.setState({ viewer: null });
@@ -284,8 +248,6 @@ class Component extends DCLogic {
       vPrev: () => this.step(-1), vNext: () => this.step(1),
       copyUser: () => this.copy('u', 'camaras'), copyPass: () => this.copy('p', 'green'),
       copyUserLbl: copied === 'u' ? 'copiado' : 'copiar', copyPassLbl: copied === 'p' ? 'copiado' : 'copiar',
-      reviews: [1, 2, 3],
-      insta: this.state.ig || ['img/playroom3.webp', 'img/almuerzo.webp', 'img/playroom4.webp', 'img/merienda.webp', 'img/playroom5.webp', 'img/sintacc.webp'].map(src => ({ src, href: 'https://instagram.com/greengardenlaplata', alt: '' }))
     };
   }
 }

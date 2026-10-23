@@ -129,33 +129,6 @@ a:hover{color:var(--gg-crema)}
             <a href="http://camaras.greengarden.com/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:54px;border-radius:27px;background:var(--gg-dorado);color:var(--gg-verde);font-size:15px">Conectarme a las cámaras</a>
           </div>
 
-          <div style="padding:48px 0">
-            <div style="padding:0 22px;display:flex;align-items:baseline;justify-content:space-between">
-              <h3 style="font-size:34px;margin:0">Lo que dicen</h3>
-              <span style="font-size:13px;color:var(--gg-crema-suave)">Google</span>
-            </div>
-            <div class="gg-scroll" style="display:flex;gap:10px;padding:18px 22px 0;overflow-x:auto;scrollbar-width:none">
-              <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
-                <div style="flex:none;width:270px;padding:18px;border-radius:12px;border:1px solid var(--gg-linea);background:repeating-linear-gradient(135deg,var(--gg-verde) 0 8px,var(--gg-verde-oscuro) 8px 16px)">
-                  <div style="color:var(--gg-dorado);letter-spacing:3px;font-size:14px">★★★★★</div>
-                  <div style="font-family:var(--f-texto);font-size:12px;line-height:1.6;color:var(--gg-crema-suave);margin-top:10px">reseña real de Google<br>nombre · fecha</div>
-                </div>
-              </sc-for>
-            </div>
-          </div>
-
-          <div style="padding:0 22px 48px">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
-              <h3 style="font-size:34px;margin:0">Instagram</h3>
-              <a href="https://instagram.com/greengardenlaplata" target="_blank" rel="noopener" style="font-size:13px">@greengardenlaplata</a>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px">
-              <sc-for list="{{ insta }}" as="g" hint-placeholder-count="6">
-                <img src="{{ g }}" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:4px">
-              </sc-for>
-            </div>
-          </div>
-
           <div style="margin:0 22px 40px;padding:28px 22px;border-radius:16px;background:var(--gg-crema);color:var(--gg-negro)">
             <div class="gg-eyebrow" style="color:var(--gg-dorado-oscuro)">Reservas</div>
             <h3 style="font-size:38px;line-height:1;margin:10px 0 10px">Reservá tu mesa por teléfono</h3>
@@ -282,28 +255,6 @@ a:hover{color:var(--gg-crema)}
             </div>
           </div>
 
-          <div style="padding:44px 20px 0">
-            <h3 style="font-size:32px;margin:0 0 16px;color:var(--gg-verde)">Reseñas</h3>
-            <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="2">
-              <div style="padding:16px 0;border-top:1px solid var(--gg-crema-2)">
-                <div style="color:var(--gg-dorado-oscuro);letter-spacing:3px;font-size:13px">★★★★★</div>
-                <div style="font-family:var(--f-texto);font-size:12px;color:var(--gg-texto-suave);margin-top:6px;padding:10px;background:repeating-linear-gradient(135deg,var(--gg-crema) 0 8px,var(--gg-crema) 8px 16px)">reseña real de Google · nombre</div>
-              </div>
-            </sc-for>
-          </div>
-
-          <div style="padding:36px 20px 0">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
-              <h3 style="font-size:32px;margin:0;color:var(--gg-verde)">Instagram</h3>
-              <a href="https://instagram.com/greengardenlaplata" target="_blank" rel="noopener" style="font-size:13px;color:var(--gg-dorado-oscuro)">@greengardenlaplata</a>
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px">
-              <sc-for list="{{ insta }}" as="g" hint-placeholder-count="6">
-                <img src="{{ g }}" alt="" style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block">
-              </sc-for>
-            </div>
-          </div>
-
           <div style="padding:44px 20px 20px">
             <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gg-dorado-oscuro);margin-bottom:10px">Reservas e info</div>
             <a href="tel:02214895239" style="display:block;font-family:var(--f-texto);font-size:44px;line-height:1;color:var(--gg-verde);margin-bottom:6px">0221-489-5239</a>
@@ -393,8 +344,6 @@ class Component extends DCLogic {
       vPrev: () => step(-1), vNext: () => step(1),
       copyUser: () => this.copy('u', 'camaras'), copyPass: () => this.copy('p', 'green'),
       copyUserLbl: copied === 'u' ? 'copiado' : 'copiar', copyPassLbl: copied === 'p' ? 'copiado' : 'copiar',
-      reviews: [1, 2, 3],
-      insta: ['img/playroom3.webp', 'img/almuerzo.webp', 'img/playroom4.webp', 'img/merienda.webp', 'img/playroom5.webp', 'img/sintacc.webp']
     };
   }
 }
