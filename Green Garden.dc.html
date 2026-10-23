@@ -19,12 +19,14 @@
 :root{
   /* Identidad de marca 2026 */
   --gg-verde:#002f2a; --gg-negro:#000000; --gg-dorado:#d6b36a;
-  /* Derivados de la marca */
-  --gg-verde-oscuro:#00231f; --gg-verde-panel:#00403a;
-  --gg-crema:#F3EEDF; --gg-crema-suave:rgba(243,238,223,.74);
+  --gg-blanco:#FFFFFF;
+  /* Solo transparencias de los colores de marca */
+  --gg-verde-oscuro:rgba(0,0,0,.35); --gg-verde-panel:rgba(0,0,0,.22);
+  --gg-crema:#FFFFFF; --gg-crema-2:rgba(0,47,42,.07); --gg-crema-suave:rgba(255,255,255,.76);
+  --gg-dorado-oscuro:#002f2a; --gg-texto-suave:rgba(0,0,0,.75);
   --gg-linea:rgba(214,179,106,.24);
   --f-display:'Green Font','Myriad Pro',sans-serif;
-  --f-texto:'Myriad Pro',Myriad,'Segoe UI',sans-serif;
+  --f-texto:'Myriad Pro',sans-serif;
   --f-apoyo:'Myriad Pro Light','Myriad Pro',sans-serif;
 }
 html{scroll-behavior:smooth}
@@ -32,7 +34,7 @@ body{margin:0;background:var(--gg-verde);color:var(--gg-crema);font-family:var(-
 h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:.04em;text-transform:uppercase}
 h1 em{font-style:normal}
 .gg-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--f-apoyo)!important;font-style:italic;font-size:15px!important;letter-spacing:.1em!important}
-.gg-eyebrow{text-shadow:0 1px 10px rgba(0,35,31,.9)}
+.gg-eyebrow{text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .gg-eyebrow::before{content:'';flex:none;width:8px;height:8px;background:var(--gg-dorado);transform:rotate(45deg)}
 .gg-rombo{display:flex;align-items:center;gap:18px;max-width:420px;margin:0 auto}
 .gg-rombo::before,.gg-rombo::after{content:'';flex:1;height:2px;background:var(--gg-dorado)}
@@ -171,7 +173,7 @@ a:hover{color:var(--gg-crema)}
     <div style="padding:clamp(26px,4vw,44px);border-radius:16px;background:var(--gg-crema);color:var(--gg-negro);display:flex;flex-direction:column">
       <div class="gg-eyebrow" style="color:var(--gg-verde)">Reservas</div>
       <h2 style="font-size:clamp(38px,4.5vw,58px);line-height:1;margin:12px 0 12px">Reservá tu mesa por teléfono</h2>
-      <p style="margin:0 0 24px;font-size:16px;line-height:1.55;color:#2b3a36">Te atendemos todos los días de 08:00 a 02:00 hs.</p>
+      <p style="margin:0 0 24px;font-size:16px;line-height:1.55;color:rgba(0,0,0,.75)">Te atendemos todos los días de 08:00 a 02:00 hs.</p>
       <a href="tel:02214895239" style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;height:58px;padding:0 24px;border-radius:29px;background:var(--gg-verde);color:var(--gg-crema);font-size:16px" style-hover="background:var(--gg-verde-panel);color:var(--gg-crema)"><span>Llamar</span><span style="font-family:var(--f-texto);font-size:15px">0221-489-5239</span></a>
     </div>
     <div>
@@ -266,9 +268,9 @@ class Component extends DCLogic {
     const v = viewer ? this.menus[viewer.key].pages : [];
     return {
       statusShort: open ? 'Abierto · hasta 02:00' : 'Abrimos 08:00',
-      statusDot: open ? '#7FB08E' : 'var(--gg-dorado)',
+      statusDot: open ? '#d6b36a' : 'currentColor',
       stickyCall: this.props.stickyCall ?? true,
-      tabs: ['almuerzo', 'merienda', 'sintacc'].map(k => { const a = k === tab; return { label: this.menus[k].short, bg: a ? '#F3EEDF' : 'transparent', fg: a ? '#002f2a' : '#F3EEDF', border: a ? '#F3EEDF' : 'rgba(214,179,106,.4)', select: () => this.setState({ tab: k }) }; }),
+      tabs: ['almuerzo', 'merienda', 'sintacc'].map(k => { const a = k === tab; return { label: this.menus[k].short, bg: a ? '#FFFFFF' : 'transparent', fg: a ? '#002f2a' : '#FFFFFF', border: a ? '#FFFFFF' : 'rgba(214,179,106,.4)', select: () => this.setState({ tab: k }) }; }),
       tabInfo: m.info,
       pages: m.pages.map((src, i) => ({
         src, alt: `${m.label} — pág. ${i + 1}`, num: String(i + 1).padStart(2, '0'),

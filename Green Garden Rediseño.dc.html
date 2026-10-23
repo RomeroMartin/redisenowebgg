@@ -17,19 +17,20 @@
 :root{
   /* Identidad de marca 2026 */
   --gg-verde:#002f2a; --gg-negro:#000000; --gg-dorado:#d6b36a;
-  /* Derivados de la marca */
-  --gg-verde-oscuro:#00231f; --gg-verde-panel:#00403a;
-  --gg-crema:#F3EEDF; --gg-crema-2:#E9E1CB; --gg-crema-suave:rgba(243,238,223,.74);
-  --gg-dorado-oscuro:#8f7231; --gg-texto-suave:#2b3a36;
+  --gg-blanco:#FFFFFF;
+  /* Solo transparencias de los colores de marca */
+  --gg-verde-oscuro:rgba(0,0,0,.35); --gg-verde-panel:rgba(0,0,0,.22);
+  --gg-crema:#FFFFFF; --gg-crema-2:rgba(0,47,42,.07); --gg-crema-suave:rgba(255,255,255,.76);
+  --gg-dorado-oscuro:#002f2a; --gg-texto-suave:rgba(0,0,0,.75);
   --gg-linea:rgba(214,179,106,.24); --gg-linea-clara:rgba(0,47,42,.18);
   --f-display:'Green Font','Myriad Pro',sans-serif;
-  --f-texto:'Myriad Pro',Myriad,'Segoe UI',sans-serif;
+  --f-texto:'Myriad Pro',sans-serif;
   --f-apoyo:'Myriad Pro Light','Myriad Pro',sans-serif;
 }
 body{margin:0;background:var(--gg-crema-2);font-family:var(--f-texto);font-synthesis:none;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase}
 h1 em,h2 em,h3 em{font-style:normal}
-.gg-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--f-apoyo)!important;font-style:italic;font-size:14px!important;letter-spacing:.1em!important;text-shadow:0 1px 10px rgba(0,35,31,.9)}
+.gg-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--f-apoyo)!important;font-style:italic;font-size:14px!important;letter-spacing:.1em!important;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .gg-eyebrow::before{content:'';flex:none;width:8px;height:8px;background:currentColor;transform:rotate(45deg)}
 a{color:var(--gg-dorado);text-decoration:none}
 a:hover{color:var(--gg-crema)}
@@ -377,7 +378,7 @@ class Component extends DCLogic {
     return {
       statusText: open ? 'Abierto ahora · hasta las 02:00 hs' : 'Cerrado ahora · Abrimos 08:00 hs',
       statusShort: open ? 'Abierto · hasta 02:00' : 'Abrimos 08:00',
-      statusDot: open ? '#7FB08E' : 'var(--gg-dorado)',
+      statusDot: open ? '#d6b36a' : 'currentColor',
       stickyCall: this.props.stickyCall ?? true,
       tabsA: keys.map(k => { const a = k === tabA; return { label: this.menus[k].short, bg: a ? 'var(--gg-crema)' : 'transparent', fg: a ? 'var(--gg-verde)' : 'var(--gg-crema)', border: a ? 'var(--gg-crema)' : 'var(--gg-linea)', select: () => this.setState({ tabA: k }) }; }),
       tabInfoA: this.menus[tabA].info,
